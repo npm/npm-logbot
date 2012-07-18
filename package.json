@@ -2,7 +2,8 @@
   "name": "npm-logbot",
   "version": "0.0.0",
   "dependencies": {
-    "request": "~2.9.203"
+    "request": "~2.9.203",
+    "couchdb-log-parse": "0.0.1"
   },
   "repository": {
     "type": "git",
@@ -11,5 +12,5 @@
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
   "license": "BSD",
   "description": "A little node program that tallies up the download counts from npm registry log files, and uploads them to a couch database.",
-  "bin":"upload.js"
+  "bin": "upload.js"
 }
