@@ -11,6 +11,8 @@ if (config.auth) {
 var file = process.argv[2]
 if (!file) throw new Error('usage: node upload.js <logfile>')
 
+var WORKERS = +process.env.WORKERS || 48
+
 var request = require('request')
 var LogParse = require('couchdb-log-parse')
 var fs = require('fs')
@@ -22,9 +24,9 @@ var downloads = {}
 var k
 var counts = []
 
-console.error('Parsing log file...');
+console.error('Parsing log file... ' + file);
 var st = fs.createReadStream(file)
-if (file.match(/\.gz$/)) st = st.pipe(zlib.Unzip())
+if (file.match(/\.gz$/)) st = st.pipe(zlib.Gunzip())
 
 st.pipe(parser)
   .on('message', function (msg) {
@@ -62,7 +64,7 @@ function uploadCounts () {
 
   console.error('uploading count data...')
   var i = 0;
-  for (var i = 0; i < 32; i ++) work(i)
+  for (var i = 0; i < WORKERS; i ++) work(i)
 }
 
 function work (id) {
