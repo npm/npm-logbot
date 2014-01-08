@@ -1,3 +1,7 @@
+// This is no longer relevant, since npm-lylog actually gets the downloads.
+// There will rarely be a tgz in these logs, and when there is, it is almost
+// certainly a duplicate.
+return
 var config = require('./config.js')
 if (!config.couch) {
   throw new Error('must set an exports.couch url in config.js')
