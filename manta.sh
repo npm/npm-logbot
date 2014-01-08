@@ -14,7 +14,7 @@ cmd="ls ~ubuntu/hosting/servers/isaacs/db/log/*access*{5,6,7}*.gz"
 for ip in $(dig +short isaacs.iriscouch.com | grep ^[0-9]); do
   for file in `ssh -i $id isaacs@$ip "$cmd"`; do
     gzfile=$(basename $file)
-    mls /isaacs/stor/npm-registry-logs/$gzfile ||\
+    mls /npm/stor/logs/$gzfile ||\
     ( ssh -i $id isaacs@$ip "cat $file" > $gzfile &&\
       (while ! mput -f $gzfile /npm/stor/logs/$gzfile ; do
         sleep 1;
