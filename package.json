@@ -10,7 +10,7 @@
     "url": "git://github.com/isaacs/npm-logbot"
   },
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
-  "license": "BSD",
+  "license": "ISC",
   "description": "A little node program that tallies up the download counts from npm registry log files, and uploads them to a couch database.",
   "bin": "upload.js"
 }
